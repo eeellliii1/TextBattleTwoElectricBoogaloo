@@ -4,7 +4,7 @@ WIP - Work in progress
 T - Individual has taken over this area
 
 # Roles
-Leo - ? \t
+Leo - ? \n
 Eli - ?
 Jedrekaksdkask - ?
 # :)
