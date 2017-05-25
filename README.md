@@ -1,6 +1,6 @@
 # TextBattleTwoElectricBoogaloo
-Eli/Jedrek/Leo AP Computer Science "Do what you want" Project
-WIP - Work in progress
+Eli/Jedrek/Leo AP Computer Science "Do what you want" Project  
+WIP - Work in progress  
 T - Individual has taken over this area
 
 # Roles
@@ -12,7 +12,7 @@ T - Individual has taken over this area
 Text-based adventure game with character customization, save points, randomly generated situations and integrated graphics (?). The game will be written in java on eclipse and will be exclusively single player.
 
 # Storyline (WIP)
--On planet earth there was a single zucc...
+- On planet earth there was a single zucc...
 # Game Interface (WIP)
 Contents of the Interface:
 - Health
