@@ -1,3 +1,4 @@
+SOLVE ISSUES ASAP (EVEN THOUGH THE ISSUES ARE MOSTLY DEVELOPMENT OF THE GAME)
 # TextBattleTwoElectricBoogaloo
 Eli/Jedrek/Leo AP Computer Science "Do what you want" Project  
 WIP - Work in progress  
