@@ -13,7 +13,11 @@ T - Individual has taken over this area
 Text-based adventure game with character customization, save points, randomly generated situations and integrated graphics (?). The game will be written in java on eclipse and will be exclusively single player.
 
 # Storyline (WIP)
-- In a world where computer science was a dead art... One Zucc will rise above the rest. Starring Zukowski as THE ZUCC coming to theaters near you.
+- In 
+
+# Theme
+- Medeival fantasy world with magic
+
 # Game Interface (WIP)
 Contents of the Interface:
 - Health/Mana
