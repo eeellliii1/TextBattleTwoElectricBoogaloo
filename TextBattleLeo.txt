@@ -1,0 +1,367 @@
+import java.util.Scanner;
+/**
+ * Battle class
+ * Made by Leo
+ */
+public class Battlefield
+{
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        String[] inventory = new String[3];
+        Hero guy = new Warrior("",inventory);//the hero initialize
+        String profession = "If you see this something is wrong";//if something goes wrong
+        int i;//dump variable
+        //fills all of the inventory slots with "empty"
+        for(i=0; i<3; i++){
+            inventory[i] = "empty";
+        }
+        System.out.print("What name should your character be? ");
+        String name = s.nextLine();
+        int classChosen=0;
+        int specialty = 0;
+        //character selection if the class doesn't exist, resets the loop to ask again.
+        while(classChosen==0){
+            System.out.print("Choose a class for your character.(1 for warrior, 2 for mage, 3 for rogue):");
+            specialty = s.nextInt();
+            if(specialty == 1){
+                guy = new Warrior(name, inventory);
+                profession = "Warrior";
+                classChosen=1;
+            }else if(specialty == 2){
+                guy = new Mage(name, inventory);
+                profession = "Mage";
+                classChosen=1;
+            }else if(specialty == 3){
+                guy = new Rogue(name, inventory);
+                profession = "Rogue";
+                classChosen=1;
+            }else{
+                System.out.println("That's not an option, try again");
+                classChosen=0;
+            }
+        }
+        System.out.println("You have made a " +profession+ " named " +name);
+        //inventory filler?
+        inventory[0] = "Health Potion";
+        if(specialty == 2){
+            inventory[1] = "Mana Potion";
+        }
+        //Villan creation
+        Player jackTheRigger = new Player("Jack The Rigger", 100, 25, 35);
+        Player kibo = new Player("Kibo", 120, 40, 50);
+        Player kekMeister = new Player("The Kekmeister", 125, 50, 50);
+        Player dragon = new Player("Dragon (prepare for doom)", 200, 40, 60);
+        
+        //stages start
+        Player bad = jackTheRigger;
+        int control;
+        int roundNumber = 0;
+        int rng;
+        //while(guy.getHealth() > 0){
+            //baddie selection
+            i=0;
+            if(i==0){
+                if(bad.getHealth() <= 0){
+                    rng = (int)(Math.random()*2);
+                    if(rng == 1){
+                        if(jackTheRigger.getHealth()>0){
+                            bad = jackTheRigger;
+                            i=1;
+                        }
+                    }else if(rng == 2){
+                        if(kibo.getHealth()>0){
+                            bad = kibo;
+                            i=1;
+                        }
+                    }else if(rng == 3){
+                        if(kekMeister.getHealth()>0){
+                            bad = kekMeister;
+                            i=1;
+                        }
+                    }
+                }
+            }
+            //Fite
+            roundNumber = 1;
+            System.out.println("You face " +bad.toString());
+            while (bad.health > 0 && guy.getHealth() > 0){
+                System.out.println("#################################### ROUND "+roundNumber+" ####################################");
+                guy.showInventory();
+                System.out.println("Select a number to use an item, select 0 to attack");
+                control = s.nextInt();
+                if(control!=0){
+                    guy.useItem(control-1);
+                }else if(control == 0){
+                    guy.attack(bad);
+                }
+                if(bad.health > 0){
+                    bad.attack(guy);
+                }
+                roundNumber++;
+                //if you won
+                if(bad.getHealth() <= 0){
+                    System.out.println("You won the fight against " +bad.toString());
+                    //item get system
+                    /*if(specialty == 2){
+                        System.out.println("You gained 1 mana potion and 1 health potion");
+                        for(i=0;i<3;i++){
+                            if(inventory[i] == "empty"){
+                                inventory[i] = "Mana Potion";
+                            }
+                        }
+                        for(i=0;i<3;i++){
+                            if(inventory[i] == "empty"){
+                                inventory[i] = "Health Potion";
+                            }
+                        }
+                    }else{
+                        System.out.println("You gained 1 damage potion and 1 health potion");
+                        for(i=0;i<3;i++){
+                            if(inventory[i] == "empty"){
+                                inventory[i] = "Damage Potion";
+                            }
+                        }
+                        for(i=0;i<3;i++){
+                            if(inventory[i] == "empty"){
+                                inventory[i] = "Health Potion";
+                            }
+                        }
+                    }*/
+                }
+            }
+            if(guy.getHealth()<=0){
+                System.out.println("You died, good job " +guy.toString()+", " +bad.toString()+" killed you.");
+            }
+        /*    i=0;
+        }*/
+        
+    }
+}
+
+/**
+ * Player Class
+ * Made by Leo
+ * 2/28/17
+ */
+public class Player
+{
+    public String name;
+    public int health;
+    public int minDamage;
+    public int maxDamage;
+    public boolean isDead = false;
+    public Player(String name, int health, int minDamage, int maxDamage){
+        this.name = name;
+        this.health = health;
+        this.minDamage = minDamage;
+        this.maxDamage = maxDamage;
+    }
+
+    public String toString(){
+        return name;
+    }
+    
+    public int getHealth(){
+        return health;
+    }
+    
+    public int getMinDamage(){
+        return minDamage;
+    }
+    
+    public int getMaxDamage(){
+        return maxDamage;
+    }
+    
+    public void setMinDamage(int newMin){
+        minDamage = newMin;
+    }
+    
+    public void setMaxDamage(int newMax){
+        maxDamage = newMax;
+    }
+    
+    public void recieveDamage(int damage){
+        health = health - damage;
+        System.out.println(name+ " has " +health+ " health remaining.");
+        if(health<=0){
+            System.out.println(toString()+ " has fainted");
+            isDead = true;
+        }
+    }
+    
+    public void attack(Player enemy){
+        int damage = Math.abs((int)(Math.random()*(maxDamage - minDamage) + minDamage));
+        System.out.println(this.name+ " dealt " +damage+ " damage to " +enemy.toString());
+        enemy.recieveDamage(damage);
+    }
+    
+    public boolean checkDeath(){
+        return isDead;
+    }
+}
+
+
+/**
+ * Made by Leo
+ */
+public class Hero extends Player
+{
+    public String[] inventory = new String[3];
+    public int maxHealth = health;
+    public Hero(String name, int health, int minDamage, int maxDamage, String[] inventory){
+        super(name, health, minDamage, maxDamage);
+        this.inventory = inventory;
+    }
+    
+    public void useItem(int choice){
+        if(inventory[choice] == "Health Potion"){
+            health += 50;
+            if(health > maxHealth){
+                health = maxHealth;
+            }
+            System.out.println(toString()+ " has " +health+"/"+maxHealth+ " health remaining.");
+            inventory[choice] = "empty";
+        }else if(inventory[choice] == "Damage Potion"){
+            maxDamage +=10;
+            minDamage +=10;
+            System.out.println(toString()+ "now does 10 more damage. (" +minDamage+ "/ " +maxDamage+ ")");
+            inventory[choice] = "empty";
+        }else if(inventory[choice] == "empty"){
+            System.out.println("THIS SLOT IS EMPTY!!");
+        }else{
+        }
+    }
+    
+    public void showInventory(){
+        System.out.println("Your inventory holds: 1. " +inventory[0]+ "; 2. " +inventory[1]+ "; 3. " +inventory[2]+ ";");
+    }
+}
+
+
+/**
+ * Made by Leo
+ */
+public class Warrior extends Hero
+{
+    public double critChance = 0.5;
+    private boolean sucessfulCrit = false;
+    public static int health = 125;
+    public static int minDamage = 20;
+    public static int maxDamage = 30;
+    
+    public Warrior(String name, String[] inventory){
+        super(name, health, minDamage, maxDamage, inventory );
+    }
+    
+    public void attack(Player enemy){
+        if(Math.random()>this.critChance){
+            System.out.println(this.toString()+ " dealt a critical hit");
+            int damage = 2*(Math.abs((int)(Math.random()*(maxDamage - minDamage) + minDamage)));
+            System.out.println(this.toString()+ " dealt " +damage+ " damage to " +enemy.toString());
+            enemy.recieveDamage(damage);
+        }else{
+            super.attack(enemy);
+       }
+    }
+}
+
+
+/**
+ * Made by Leo
+ */
+public class Mage extends Hero
+{
+    public int mana = 40;
+    public static int health = 100;
+    public static int minDamage = 40;
+    public static int maxDamage = 70;
+    
+    public Mage(String name, String[] inventory){
+        super(name, health, minDamage, maxDamage, inventory);
+    }
+    
+    public void useItem(int choice){
+        super.useItem(choice);
+        if(inventory[choice] == "Mana Potion"){
+            mana += 30;
+            System.out.println(toString()+ " has recovered 10 mana and now has " +mana+ " mana.");
+            inventory[choice] = "empty";
+        }
+    }
+    
+    public void attack(Player enemy){
+        if(mana <=0){
+            System.out.println("Not enough mana");
+            mana = 0;
+        }else if(mana >= 0){
+            int damage = Math.abs((int)(Math.random()*(maxDamage - minDamage) + minDamage));
+            System.out.println(this.name+ " dealt " +damage+ " damage to " +enemy.toString());
+            enemy.recieveDamage(damage);
+            mana -= 10;
+            System.out.println(toString()+ " now has " +mana+ " mana.");
+        }
+    }
+}
+
+
+/**
+ *Made by Leo
+ */
+public class Rogue extends Hero
+{
+    public double secondAttackChance = 0.5;//attacks double
+    public static int health = 100;
+    public static int minDamage = 40;
+    public static int maxDamage = 60;
+    
+    public Rogue(String name, String[] inventory){
+        super(name, health, minDamage, maxDamage, inventory);
+    }
+    
+    public void attack(Player enemy){ 
+        if(Math.random()>this.secondAttackChance){
+            int damage = (Math.abs((int)(Math.random()*(maxDamage - minDamage) + minDamage)));
+            System.out.println(this.toString()+ " dealt " +damage+ " damage to " +enemy.toString());
+            enemy.recieveDamage(damage);
+            System.out.println("Dagger mastery skill: Windfury activated, can attack again");
+            super.attack(enemy);
+        }else{
+            super.attack(enemy);
+            System.out.println("Windfury wiffed, no reattack");
+        }
+    }
+}
+
+
+/**
+ * Bonus thing I was working on, but didn't implement
+ * Made by Leo
+ */
+public class Villan extends Player
+{
+    String item;
+    public int currentHealth;
+    public int currentMinDamage;
+    public int currentMaxDamage;
+    public Villan(String name, int health, int minDamage, int maxDamage, String item){
+        super(name, health, minDamage, maxDamage);
+        this.item = item;
+    }
+    
+    public void useItem(){
+        if(item == "Health Potion"){
+            currentHealth += 30;
+            if(currentHealth > getHealth()){
+                currentHealth = getHealth();
+            }
+            System.out.println(toString()+ " has " +currentHealth+ " health remaining.");
+        }else if(item == "Soulstone"){
+            currentHealth = 6/health;
+            System.out.println(toString()+ " used a soulstone and has " +currentHealth+ " health.");
+        }else if(item == ""){
+            
+        }else if(item == "empty"){
+        }
+    }
+}
