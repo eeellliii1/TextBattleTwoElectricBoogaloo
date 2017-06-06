@@ -6,6 +6,7 @@ public class CharacterCreator
     private static String[] inventory = {"Health_Potion", "Damage_Potion", "empty"};
     private static String cClass;
     private static Scanner input = new Scanner(System.in);
+    private static String cName;
     public static void main(String args[])
     {
         //Begins character creation
@@ -82,3 +83,4 @@ public class CharacterCreator
         }
 
     }
+}

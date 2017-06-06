@@ -69,7 +69,7 @@ public class BattleClass
             String response = input.next();
             if(response.equals("y"))
             {
-                CharacterCreator();
+                CharacterCreator.characterCreation();
             }
             else
             {
