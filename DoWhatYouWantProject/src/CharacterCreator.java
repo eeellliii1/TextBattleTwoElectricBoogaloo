@@ -38,7 +38,7 @@ public class CharacterCreator {
 					cClass = "Mage";
 					Hero playerOne = new Mage(cName, 45, 35, 80, inventory);
 					System.out.println("And so begins the journey of " + cName + " the " + cClass + "!");
-					BattleClass.fightClub(playerOne);
+					//BattleClass.fightClub(playerOne);
 				}
 			}
 
@@ -52,7 +52,8 @@ public class CharacterCreator {
 					cClass = "Warrior";
 					Hero playerOne = new Warrior(cName, 20, 5, 100, inventory);
 					System.out.println("And so begins the journey of " + cName + " the " + cClass + "!");
-					BattleClass.fightClub(playerOne);
+					//BattleClass.fightClub(playerOne);
+					
 				}
 			}
 
@@ -66,7 +67,8 @@ public class CharacterCreator {
 					cClass = "Rogue";
 					Hero playerOne = new Rogue(cName, 30, 10, 95, inventory);
 					System.out.println("And so begins the journey of " + cName + " the " + cClass + "!");
-					BattleClass.fightClub(playerOne);
+					//BattleClass.fightClub(playerOne);
+					
 				}
 			}
 		}

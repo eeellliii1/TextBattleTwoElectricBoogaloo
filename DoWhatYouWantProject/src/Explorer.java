@@ -2,7 +2,11 @@ import java.util.Scanner;
 
 public class Explorer {
 	private String direction;
-
+	private Hero playerOne;
+	public Explorer(Hero playerOne)
+	{
+	this.playerOne = playerOne;
+	}
 	public void move() {
 		directionChecker();
 		if (direction.equals("south") || direction.equals("South") || direction.equals("s")) {
