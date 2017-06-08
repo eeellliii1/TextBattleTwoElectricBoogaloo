@@ -11,4 +11,8 @@ public class Map {
 
 		}
 	}
+	public static Tile getTile(int x, int y)
+	{
+		return map[x][y];
+	}
 }
