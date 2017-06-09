@@ -50,4 +50,16 @@ public class PlayerMap extends Map {
 			Explorer.move();
 		}
 	}
+	
+	public static int getX()
+	{
+		return x;
+	}
+	
+	public static int getY()
+	{
+		return y;
+	}
+	
+	
 }
