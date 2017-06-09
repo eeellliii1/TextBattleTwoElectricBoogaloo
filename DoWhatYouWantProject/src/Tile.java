@@ -2,15 +2,18 @@
 public class Tile {
 	private String contents;
 	private boolean isPassable;
+	private boolean containsCharacter;
 	//Default constructor
 	public Tile(){
 		contents = "Plains";
 		isPassable = true;
+		containsCharacter = false;
 	}
-	public Tile(String c, boolean p)
+	public Tile(String c, boolean p, boolean cC)
 	{
 		contents = c;
 		isPassable = p;
+		containsCharacter = cC;
 	}
 	public String getContents() {
 		return contents;
