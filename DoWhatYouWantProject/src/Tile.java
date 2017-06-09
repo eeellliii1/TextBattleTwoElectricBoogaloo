@@ -2,6 +2,11 @@
 public class Tile {
 	private String contents;
 	private boolean isPassable;
+	//Default constructor
+	public Tile(){
+		contents = "Plains";
+		isPassable = true;
+	}
 	public Tile(String c, boolean p)
 	{
 		contents = c;
