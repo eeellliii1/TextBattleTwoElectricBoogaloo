@@ -11,6 +11,8 @@ public class CharacterCreator {
 	public static void main(String args[]) {
 		// Begins character creation
 		characterCreation();
+		Explorer.surroundings();
+		Explorer.move();
 	}
 
 	public static void characterCreation() {

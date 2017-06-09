@@ -10,6 +10,7 @@ public class Explorer {
 
 	public static void move() {
 		PlayerMap.mapMovePlayer(directionChecker());
+		surroundings();
 
 	}
 
@@ -21,9 +22,14 @@ public class Explorer {
 		direction = input.next();
 		return direction;
 	}
-	
-	public static void surroundings()
-	{
-		System.out.println("You are currently in " + ((Map.getTile((PlayerMap.getX()), (PlayerMap.getY())).getContents())) + ", To the north there is a " + (((Map.getTile((PlayerMap.getX()), (PlayerMap.getY()) + 1).getContents()))) + ", to the east there is " + ((Map.getTile((PlayerMap.getX()) + 1, (PlayerMap.getY())).getContents())) + ", to the south there is " + ((Map.getTile((PlayerMap.getX()), (PlayerMap.getY()) - 1).getContents())) + ", to the west there is " + ((Map.getTile((PlayerMap.getX() - 1), (PlayerMap.getY())).getContents())));
+
+	public static void surroundings() {
+		System.out.println("You are currently in "
+				+ ((Map.getTile((PlayerMap.getX()), (PlayerMap.getY())).getContents())) + ", To the north there is a "
+				+ (((Map.getTile((PlayerMap.getX()), (PlayerMap.getY()) + 1).getContents())))
+				+ ", to the east there is " + ((Map.getTile((PlayerMap.getX()) + 1, (PlayerMap.getY())).getContents()))
+				+ ", to the south there is " + ((Map.getTile((PlayerMap.getX()), (PlayerMap.getY()) - 1).getContents()))
+				+ ", to the west there is "
+				+ ((Map.getTile((PlayerMap.getX() - 1), (PlayerMap.getY())).getContents())));
 	}
 }
