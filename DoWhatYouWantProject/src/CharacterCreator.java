@@ -10,8 +10,8 @@ public class CharacterCreator {
 
 	public static void main(String args[]) {
 		// Begins character creation
-		PlayerMap.main(args);
-		Map.main(args);
+		PlayerMap position = new PlayerMap();
+		Map map = new Map();
 		characterCreation();
 		Explorer.surroundings();
 		Explorer.move();
