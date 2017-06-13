@@ -1,18 +1,25 @@
-public class Tile {
+
+public class DoorTile extends Tile {
 	private String contents;
 	private boolean isPassable;
-	//Default constructor
-	public Tile(){
+	private String material;
+	private Door door;
+
+	// Default constructor
+	public DoorTile(){
 		contents = "Plains";
 		isPassable = true;
+		
 	}
-	public Tile(String c, boolean p)
+
+	public DoorTile(String c, boolean p)
 	{
 		contents = c;
 		isPassable = p;
 	}
+
 	public String getContents() {
-		return contents;
+		return contents + " " + material + " door that is " + door.;
 	}
 
 	public boolean checkPass() {
@@ -31,4 +38,4 @@ public class Tile {
 			isPassable = false;
 		}
 	}
-}sn
+}
