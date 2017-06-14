@@ -4,7 +4,7 @@ public class PlayerMap extends Map {
 	private static int x = 25;
 	private static int y = 40;
 
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		for (int x = 0; x < 50; x++) {
 			for (int y = 0; y < 50; y++) {
 				pMap[x][y] = 0;
@@ -12,7 +12,7 @@ public class PlayerMap extends Map {
 			}
 			//Eli's main method
 		}
-	}*/
+	}
 	public PlayerMap(){
 		for (int x = 0; x < 50; x++) {
 			for (int y = 0; y < 50; y++) {
@@ -59,11 +59,11 @@ public class PlayerMap extends Map {
 		}
 	}
 
-	public int getX() {
+	public static int getX() {
 		return x;
 	}
 
-	public int getY() {
+	public static int getY() {
 		return y;
 	}
 
