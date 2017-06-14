@@ -19,7 +19,9 @@ public class DoorTile extends Tile {
 	}
 
 	public String getContents() {
-		return contents + " " + material + " door that is " + door.getMaterial();
+
+		return contents + " " + material + " door that is " + door;
+//>>>>>>> branch 'master' of https://github.com/eeellliii1/TextBattleTwoElectricBoogaloo.git
 	}
 
 	public boolean checkPass() {

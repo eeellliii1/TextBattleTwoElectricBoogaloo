@@ -10,8 +10,16 @@ public class PlayerMap extends Map {
 				pMap[x][y] = 0;
 				pMap[25][40] = 1;
 			}
-
+			//Eli's main method
 		}
+	}
+	public PlayerMap(){
+		for (int x = 0; x < 50; x++) {
+			for (int y = 0; y < 50; y++) {
+				pMap[x][y] = 0;
+			}
+		}
+		pMap[25][40] = 1;
 	}
 
 	public static void mapMovePlayer(String direction) {
