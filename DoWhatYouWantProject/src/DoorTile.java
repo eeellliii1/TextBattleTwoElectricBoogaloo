@@ -19,7 +19,7 @@ public class DoorTile extends Tile {
 	}
 
 	public String getContents() {
-		return contents + " " + material + " door that is " + door.;
+		return contents + " " + material + " door that is " + door.getMaterial();
 	}
 
 	public boolean checkPass() {
