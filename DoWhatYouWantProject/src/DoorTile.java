@@ -6,14 +6,13 @@ public class DoorTile extends Tile {
 	private Door door;
 
 	// Default constructor
-	public DoorTile(){
+	public DoorTile() {
 		contents = "Plains";
 		isPassable = true;
-		
+
 	}
 
-	public DoorTile(String c, boolean p)
-	{
+	public DoorTile(String c, boolean p) {
 		contents = c;
 		isPassable = p;
 	}
@@ -21,7 +20,6 @@ public class DoorTile extends Tile {
 	public String getContents() {
 
 		return contents + " " + material + " door that is " + door;
-//>>>>>>> branch 'master' of https://github.com/eeellliii1/TextBattleTwoElectricBoogaloo.git
 	}
 
 	public boolean checkPass() {

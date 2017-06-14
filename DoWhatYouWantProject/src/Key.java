@@ -10,7 +10,7 @@ private String door;
 	{
 		if(door.toLowerCase() == this.door.toLowerCase())
 		{
-			door.setOpen();
+			//door.setOpen();
 		}
 	}
 }

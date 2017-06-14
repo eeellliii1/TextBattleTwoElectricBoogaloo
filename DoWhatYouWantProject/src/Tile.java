@@ -31,8 +31,8 @@ public class Tile {
 			isPassable = false;
 		}
 	}
-<<<<<<< HEAD
+
 }
-=======
-}//sn
->>>>>>> branch 'master' of https://github.com/eeellliii1/TextBattleTwoElectricBoogaloo.git
+
+
+
